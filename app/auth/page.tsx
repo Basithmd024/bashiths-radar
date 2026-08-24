@@ -13,15 +13,25 @@ export default function AuthPage() {
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
 
-  const handleInstantStudentLogin = () => {
-    localStorage.setItem('student_session', JSON.stringify({
-      email: email || 'student@mgit.ac.in',
-      phone: phone || '918309166629',
-      logged_in: true,
-      role: 'student_builder'
-    }));
-    toast.success('Logged in successfully!', {
-      description: 'Welcome to Reminder Daily Update.',
+  const isRealSupabaseConfigured = () => {
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    return Boolean(url && !url.includes('placeholder') && url.startsWith('https://') && !url.includes('example'));
+  };
+
+  const handleInstantStudentLogin = (customEmail?: string) => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('student_session', JSON.stringify({
+        email: customEmail || email || 'student@mgit.ac.in',
+        phone: phone || '918309166629',
+        logged_in: true,
+        role: 'student_builder'
+      }));
+      if (phone) {
+        localStorage.setItem('user_phone', phone);
+      }
+    }
+    toast.success('Welcome to Reminder Daily Update! 🚀', {
+      description: 'Logged in as Student Builder.',
     });
     router.push('/events');
   };
@@ -31,6 +41,15 @@ export default function AuthPage() {
     if (!email) return;
 
     setLoading(true);
+
+    if (!isRealSupabaseConfigured()) {
+      setTimeout(() => {
+        handleInstantStudentLogin(email);
+        setLoading(false);
+      }, 300);
+      return;
+    }
+
     try {
       const supabase = createClient();
       const { error } = await supabase.auth.signInWithOtp({
@@ -40,42 +59,35 @@ export default function AuthPage() {
         },
       });
 
-      if (error) {
-        // If Supabase is unconfigured, fallback to student session smoothly
-        console.warn('Supabase auth fallback:', error.message);
-        handleInstantStudentLogin();
-        return;
-      }
+      if (error) throw error;
 
       setSent(true);
       toast.success('Magic link sent!', {
         description: 'Check your email inbox to log in instantly.',
       });
     } catch {
-      // Graceful fallback so login never crashes
-      handleInstantStudentLogin();
+      handleInstantStudentLogin(email);
     } finally {
       setLoading(false);
     }
   };
 
   const handleGoogleLogin = async () => {
+    if (!isRealSupabaseConfigured()) {
+      handleInstantStudentLogin('google.student@mgit.ac.in');
+      return;
+    }
+
     try {
       const supabase = createClient();
-      const { error } = await supabase.auth.signInWithOAuth({
+      await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
           redirectTo: `${window.location.origin}/events`,
         },
       });
-      if (error) {
-        toast.info('Connecting student account...', {
-          description: 'Instant student access enabled.',
-        });
-        handleInstantStudentLogin();
-      }
     } catch {
-      handleInstantStudentLogin();
+      handleInstantStudentLogin('google.student@mgit.ac.in');
     }
   };
 
@@ -85,7 +97,6 @@ export default function AuthPage() {
       toast.error('Please enter your WhatsApp phone number');
       return;
     }
-    localStorage.setItem('user_phone', phone);
     handleInstantStudentLogin();
   };
 
@@ -145,7 +156,7 @@ export default function AuthPage() {
 
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-accent text-navy font-semibold text-sm hover:bg-accent/90 transition-all duration-150 shadow-md shadow-accent/10"
+                className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-accent text-navy font-semibold text-sm hover:bg-accent/90 transition-all duration-150 shadow-md shadow-accent/10 cursor-pointer"
               >
                 <span>Continue with WhatsApp</span>
                 <ArrowRight className="w-4 h-4" />
@@ -179,9 +190,9 @@ export default function AuthPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex items-center justify-center gap-2 py-2 px-4 rounded-xl bg-surface border border-border hover:border-accent/60 text-text font-medium text-xs transition-all duration-150 disabled:opacity-50"
+                className="w-full flex items-center justify-center gap-2 py-2 px-4 rounded-xl bg-surface border border-border hover:border-accent/60 text-text font-medium text-xs transition-all duration-150 disabled:opacity-50 cursor-pointer"
               >
-                {loading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <span>Send Magic Link</span>}
+                {loading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <span>Send Magic Link / Sign In</span>}
               </button>
             </form>
 
@@ -190,7 +201,7 @@ export default function AuthPage() {
               <button
                 type="button"
                 onClick={handleGoogleLogin}
-                className="w-full flex items-center justify-center gap-3 py-2.5 px-4 rounded-xl bg-surface border border-border hover:border-accent/60 text-text font-medium text-xs transition-all duration-150"
+                className="w-full flex items-center justify-center gap-3 py-2.5 px-4 rounded-xl bg-surface border border-border hover:border-accent/60 text-text font-medium text-xs transition-all duration-150 cursor-pointer"
               >
                 <svg className="w-4 h-4" viewBox="0 0 24 24">
                   <path
@@ -215,10 +226,10 @@ export default function AuthPage() {
 
               <button
                 type="button"
-                onClick={handleInstantStudentLogin}
-                className="w-full flex items-center justify-center gap-2 py-2 px-4 rounded-xl bg-accent/10 border border-accent/30 text-accent font-medium text-xs hover:bg-accent/20 transition-all duration-150"
+                onClick={() => handleInstantStudentLogin()}
+                className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-accent/10 border border-accent/30 text-accent font-semibold text-xs hover:bg-accent/20 transition-all duration-150 cursor-pointer"
               >
-                <UserCheck className="w-3.5 h-3.5" />
+                <UserCheck className="w-4 h-4" />
                 <span>⚡ Instant Student Access (Skip Login)</span>
               </button>
             </div>
