@@ -97,7 +97,7 @@ export async function POST(req: NextRequest) {
     } else if (normalizedCmd === 'MORE' || normalizedCmd.startsWith('MORE')) {
       replyText = `✨ *More Upcoming Opportunities*\n\n1. *IIIT-H Research Open Day: NLP & Vision*\n→ Direct access to research labs for internships.\nApply: https://iiit.ac.in/events\n\n2. *Google Solution Challenge 2026*\n→ Global mentorship & Gemini API compute.\nApply: https://developers.google.com\n\nReply *SAVE 1* or *SAVE 2* to track.`;
     } else if (normalizedCmd === 'HELP' || normalizedCmd === 'COMMANDS') {
-      replyText = `👋 *Basith’s Radar Commands*\n\n• *STATUS* — view your saved events & deadlines\n• *SAVE <num>* — save event from latest brief\n• *DONE <num>* — mark as applied\n• *MORE* — get more opportunities\n• *PAUSE* / *RESUME* — toggle alerts\n• *SET HYDERABAD* / *SET PAN INDIA*`;
+      replyText = `👋 *Hackey Commands*\n\n• *STATUS* — view your saved events & deadlines\n• *SAVE <num>* — save event from latest brief\n• *DONE <num>* — mark as applied\n• *MORE* — get more opportunities\n• *PAUSE* / *RESUME* — toggle alerts\n• *SET HYDERABAD* / *SET PAN INDIA*`;
     } else {
       // Normal casual conversation -> SILENTLY IGNORE (never spam contacts)
       return NextResponse.json({ status: 'ignored', reason: 'Not a recognized command' });

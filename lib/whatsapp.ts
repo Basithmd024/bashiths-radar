@@ -271,7 +271,7 @@ export function formatUrgentReminder(data: {
     ``,
     data.applyUrl ? `🔗 Apply: ${data.applyUrl}` : '',
     ``,
-    `— Basith’s Radar ◉`,
+    `— Hackey ⚡`,
   ]
     .filter(Boolean)
     .join('\n');
@@ -298,7 +298,7 @@ export function formatEventDayReminder(data: {
     ``,
     data.applyUrl ? `Details: ${data.applyUrl}` : '',
     ``,
-    `— Basith’s Radar ◉`,
+    `— Hackey ⚡`,
   ]
     .filter(Boolean)
     .join('\n');

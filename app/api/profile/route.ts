@@ -22,7 +22,7 @@ const ProfileUpdateSchema = z.object({
 
 const DEFAULT_PROFILE = {
   id: '00000000-0000-0000-0000-000000000000',
-  whatsapp_number: '+918309166629',
+  whatsapp_number: '',
   whatsapp_opted_in: true,
   notifications_paused: false,
   morning_digest_enabled: true,

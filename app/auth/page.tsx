@@ -21,8 +21,8 @@ export default function AuthPage() {
   const handleInstantStudentLogin = (customEmail?: string) => {
     if (typeof window !== 'undefined') {
       localStorage.setItem('student_session', JSON.stringify({
-        email: customEmail || email || 'student@mgit.ac.in',
-        phone: phone || '918309166629',
+        email: customEmail || email || 'student@university.edu',
+        phone: phone || '',
         logged_in: true,
         role: 'student_builder'
       }));

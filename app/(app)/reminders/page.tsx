@@ -250,7 +250,7 @@ export default function RemindersPage() {
 📅 Event date: Sep 15, 2026
 🔗 Apply here: https://sih.gov.in
 
-— Basith's Radar`}
+— Hackey ⚡`}
         </div>
       </div>
     </div>

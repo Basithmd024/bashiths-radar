@@ -90,7 +90,8 @@ export async function POST(req: NextRequest) {
     // 5. Send to each user
     for (const user of users || []) {
       results.usersProcessed++;
-      const rawPhone = user.whatsapp_number || '918309166629';
+      const rawPhone = user.whatsapp_number;
+      if (!rawPhone) continue;
       const phone = decryptText(rawPhone);
 
       if (!phone) {
