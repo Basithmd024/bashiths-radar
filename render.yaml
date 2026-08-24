@@ -10,13 +10,17 @@ services:
       - key: SERVER_TYPE
         value: http
       - key: SERVER_PORT
-        value: "8080"
+        value: "10000"
+      - key: PORT
+        value: "10000"
+      - key: SERVER_URL
+        value: https://evolution-api-t9p5.onrender.com
       - key: CORS_ORIGIN
         value: "*"
       - key: CORS_METHODS
         value: "GET,POST,PUT,DELETE"
       - key: AUTHENTICATION_API_KEY
-        generateValue: true
+        value: Zi3VxfR/Tt/CIsobQ4jZnIz2t35CIBFIlZppDyHsW8s=
       - key: AUTHENTICATION_EXPOSE_IN_FETCH_INSTANCES
         value: "true"
       - key: CACHE_REDIS_ENABLED
@@ -24,7 +28,7 @@ services:
       - key: CACHE_LOCAL_ENABLED
         value: "true"
       - key: DATABASE_PROVIDER
-        value: "postgresql"
+        value: postgresql
       - key: DATABASE_CONNECTION_URI
         fromDatabase:
           name: evolution-db
