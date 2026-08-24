@@ -274,22 +274,7 @@ export default function SettingsPage() {
         </div>
       </div>
 
-      {/* 4. Evolution API / WhatsApp Engine Info */}
-      <div className="bg-card border border-border rounded-xl p-5 shadow-sm space-y-3">
-        <div className="flex items-center gap-2.5">
-          <Sparkles className="w-5 h-5 text-accent" />
-          <div>
-            <h2 className="text-sm font-semibold text-text">WhatsApp Engine (Evolution API)</h2>
-            <p className="text-xs text-muted">
-              Self-hosted open-source WhatsApp API for automated delivery without sandbox limitations.
-            </p>
-          </div>
-        </div>
-        <p className="text-xs text-muted leading-relaxed">
-          Ensure your <code className="bg-surface px-1.5 py-0.5 rounded text-accent font-mono">EVOLUTION_API_URL</code> and{' '}
-          <code className="bg-surface px-1.5 py-0.5 rounded text-accent font-mono">EVOLUTION_API_KEY</code> environment variables are configured in your <code className="bg-surface px-1.5 py-0.5 rounded text-accent font-mono">.env.local</code> file.
-        </p>
-      </div>
+
 
       {/* 5. Account Section */}
       <div className="bg-card border border-border rounded-xl p-5 shadow-sm space-y-4">
