@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: evolution-api
+    runtime: image
+    image:
+      url: evoapicloud/evolution-api:latest
+    plan: free
+    region: oregon
+    envVars:
+      - key: SERVER_TYPE
+        value: http
+      - key: SERVER_PORT
+        value: "8080"
+      - key: CORS_ORIGIN
+        value: "*"
+      - key: CORS_METHODS
+        value: "GET,POST,PUT,DELETE"
+      - key: AUTHENTICATION_API_KEY
+        generateValue: true
+      - key: AUTHENTICATION_EXPOSE_IN_FETCH_INSTANCES
+        value: "true"
+      - key: CACHE_REDIS_ENABLED
+        value: "false"
+      - key: CACHE_LOCAL_ENABLED
+        value: "true"
+      - key: DATABASE_PROVIDER
+        value: "postgresql"
+      - key: DATABASE_CONNECTION_URI
+        fromDatabase:
+          name: evolution-db
+          property: connectionString
+
+databases:
+  - name: evolution-db
+    plan: free
+    region: oregon
