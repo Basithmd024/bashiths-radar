@@ -3,9 +3,12 @@ import { sendWhatsAppMessage } from '@/lib/whatsapp';
 
 // Bot output signatures to prevent recursive loops
 const BOT_SIGNATURES = [
+  '☀️ *Hackey',
+  '🌙 *Hackey',
   '☀️ *Basith',
   '🌙 *Basith',
   '📋 *Your Radar',
+  '📋 *Hackey Status',
   '✅ *Saved',
   '🎉 *Marked',
   '🎉 *Congratulations',
@@ -16,10 +19,13 @@ const BOT_SIGNATURES = [
   '🇮🇳 *Preferences Updated',
   '🆓 *Preferences Updated',
   '✨ *More Upcoming',
+  '👋 *Hackey Commands',
   '👋 *Basith’s Radar',
   '🔔 *Application',
   '📅 *Event happening',
+  '— Hackey ⚡',
   '— Basith’s Radar',
+  '⚡ *Hackey',
   '⚡ *Basith’s Radar',
   '☁️ *Cloud 24/7',
 ];

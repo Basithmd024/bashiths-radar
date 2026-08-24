@@ -18,7 +18,7 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Reminder Daily Update | AI × PM Event Tracker & Digest",
+  title: "Hackey | AI × PM Event Tracker & Digest",
   description: "WhatsApp-First AI & PM Event Tracker, Hackathon Deadlines, and Actionable Daily Digest for Students & Builders.",
 };
 

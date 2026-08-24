@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase-client';
-import { Radar, Mail, Sparkles, ArrowRight, Loader2, Phone, UserCheck } from 'lucide-react';
+import { Zap, Mail, Sparkles, ArrowRight, Loader2, Phone, UserCheck } from 'lucide-react';
 import { toast } from 'sonner';
 
 export default function AuthPage() {
@@ -30,7 +30,7 @@ export default function AuthPage() {
         localStorage.setItem('user_phone', phone);
       }
     }
-    toast.success('Welcome to Reminder Daily Update! 🚀', {
+    toast.success('Welcome to Hackey! ⚡', {
       description: 'Logged in as Student Builder.',
     });
     router.push('/events');
@@ -106,13 +106,13 @@ export default function AuthPage() {
         {/* Header */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-accent/15 border border-accent/30 mb-4 shadow-sm shadow-accent/20">
-            <Radar className="w-6 h-6 text-accent animate-pulse" />
+            <Zap className="w-6 h-6 text-accent animate-pulse" />
           </div>
-          <h1 className="text-2xl font-bold text-text tracking-tight">
-            Reminder Daily Update
+          <h1 className="text-2xl font-extrabold text-text tracking-tight">
+            Hackey ⚡
           </h1>
           <p className="text-xs text-muted mt-1.5 max-w-xs mx-auto">
-            WhatsApp-First AI & PM Event Tracker, Hackathons & Intelligence Digest
+            WhatsApp-First AI × PM Event Tracker, Hackathons & Intelligence Digest
           </p>
         </div>
 

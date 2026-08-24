@@ -173,7 +173,7 @@ export function formatMorningDigest(data: {
   upcomingEvents: Array<{ title: string; eventDate: string; whyRead?: string | null }>;
   aiUpdates: Array<{ tag: string; title: string; oneLine?: string | null; url: string }>;
 }): string {
-  const sections: string[] = [`☀️ *Basith’s Radar — Morning Brief*\n`];
+  const sections: string[] = [`☀️ *Hackey — Morning Brief*\n`];
 
   if (data.urgentEvents.length > 0) {
     sections.push(`🔥 *Urgent applications*`);
@@ -218,7 +218,7 @@ export function formatEveningDigest(data: {
   newOpportunities: Array<{ title: string; whyRead?: string | null; applyUrl?: string | null }>;
   eveningReads: Array<{ title: string; oneLine?: string | null; url: string }>;
 }): string {
-  const sections: string[] = [`🌙 *Basith’s Radar — Evening Brief*\n`];
+  const sections: string[] = [`🌙 *Hackey — Evening Brief*\n`];
 
   if (data.closingEvents.length > 0) {
     sections.push(`⏰ *Don’t miss these*`);
@@ -244,7 +244,7 @@ export function formatEveningDigest(data: {
     });
   }
 
-  sections.push(`— Basith’s Radar ◉`);
+  sections.push(`— Hackey ⚡`);
   return sections.join('\n');
 }
 
