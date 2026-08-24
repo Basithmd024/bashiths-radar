@@ -1,24 +1,12 @@
 {
   "crons": [
     {
-      "path": "/api/cron/scrape-events",
-      "schedule": "0 23 * * *"
-    },
-    {
-      "path": "/api/cron/fetch-digest",
-      "schedule": "30 23 * * *"
-    },
-    {
       "path": "/api/cron/send-morning-digest",
       "schedule": "30 2 * * *"
     },
     {
       "path": "/api/cron/send-evening-digest",
       "schedule": "30 13 * * *"
-    },
-    {
-      "path": "/api/cron/send-reminders",
-      "schedule": "*/15 * * * *"
     }
   ]
 }
