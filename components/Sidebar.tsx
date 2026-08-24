@@ -17,15 +17,15 @@ export function Sidebar() {
   return (
     <aside className="hidden lg:flex flex-col w-60 min-h-screen bg-surface border-r border-border p-4 fixed left-0 top-0 bottom-0">
       {/* Logo */}
-      <div className="flex items-center gap-2.5 mb-8 px-2 pt-2">
-        <div className="w-8 h-8 rounded-lg bg-accent/20 border border-accent/30 flex items-center justify-center">
+      <Link href="/events" className="flex items-center gap-2.5 mb-8 px-2 pt-2 group">
+        <div className="w-8 h-8 rounded-lg bg-accent/20 border border-accent/30 flex items-center justify-center group-hover:scale-105 transition-transform">
           <Radar className="w-4.5 h-4.5 text-accent" />
         </div>
         <div>
-          <p className="text-sm font-semibold text-text leading-none">Basith&apos;s</p>
-          <p className="text-xs text-accent font-mono leading-none mt-0.5">Radar ◉</p>
+          <p className="text-sm font-bold text-text leading-none">Reminder</p>
+          <p className="text-[11px] text-accent font-mono font-medium leading-none mt-0.5">Daily Update ◉</p>
         </div>
-      </div>
+      </Link>
 
       {/* Nav items */}
       <nav className="flex-1 space-y-1">
@@ -57,7 +57,7 @@ export function Sidebar() {
           MGIT Hyderabad · AI/PM Tracker
         </p>
         <p className="text-[10px] text-muted/60 px-2 mt-0.5">
-          Last updated: {new Date().toLocaleDateString('en-IN')}
+          WhatsApp 24/7 Automation
         </p>
       </div>
     </aside>

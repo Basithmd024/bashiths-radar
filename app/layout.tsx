@@ -18,8 +18,8 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Basith's Radar | AI × PM Event Tracker & Digest",
-  description: "Personal AI & PM Command Center for Events, Hackathons, News Digest & WhatsApp Reminders.",
+  title: "Reminder Daily Update | AI × PM Event Tracker & Digest",
+  description: "WhatsApp-First AI & PM Event Tracker, Hackathon Deadlines, and Actionable Daily Digest for Students & Builders.",
 };
 
 export default function RootLayout({

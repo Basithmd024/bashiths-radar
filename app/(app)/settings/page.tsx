@@ -123,8 +123,16 @@ export default function SettingsPage() {
   };
 
   const handleSignOut = async () => {
-    const supabase = createClient();
-    await supabase.auth.signOut();
+    try {
+      const supabase = createClient();
+      await supabase.auth.signOut();
+    } catch {
+      // ignore
+    }
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('student_session');
+      localStorage.removeItem('user_phone');
+    }
     toast.success('Signed out');
     window.location.href = '/auth';
   };
